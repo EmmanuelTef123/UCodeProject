@@ -35,4 +35,11 @@ public class RegisterServletTest {
   
    Mockito.verify(mockPrintWriter).println("<h1>RegisterServlet GET request.</h1>");
  }
+ @Test
+ public void testDoGet() throws IOException, ServletException {
+   registerServlet.doGet(mockRequest, mockResponse);
+
+   Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
+ }
+
 }
