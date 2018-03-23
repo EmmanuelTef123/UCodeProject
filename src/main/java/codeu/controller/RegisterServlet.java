@@ -37,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
      throws IOException, ServletException {
       //now we want to store the username and password
-      String username = request.getParameter("username");
+      String username = request.getParameter("username").toLowerCase();
       String password = request.getParameter("password");
 
       //checking to make sure that the username entered is only letter,numbers,spaces
@@ -62,6 +62,7 @@ public class RegisterServlet extends HttpServlet {
 
       //now when weve made sure that unique & proper username
       User user = new User(UUID.randomUUID(), username, password, Instant.now());
+      userStore.addUser(user);
 
       response.sendRedirect("/login");
 
