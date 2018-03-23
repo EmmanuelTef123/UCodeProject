@@ -32,4 +32,17 @@ public class RegisterServletTest {
 
    Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
  }
+
+
+ //here we are checking to make sure that the correct username is being put in
+  /*@Test
+  public void testDoPost() throws IOException, ServletException {
+    Mockito.when(mockRequest.getParameter("username")).thenReturn("bad !@#$%^&*[] username");
+
+    registerServlet.doPost(mockRequest, mockResponse);
+
+    Mockito.verify(mockRequest)
+        .setAttribute("error", "please enter only letters, numbers, and spaces.");
+    Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
+  }*/
 }
