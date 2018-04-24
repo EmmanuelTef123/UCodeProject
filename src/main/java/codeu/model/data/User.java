@@ -35,7 +35,7 @@ public class User {
   public User(UUID id, String name, String password, Instant creation) {
     this.id = id;
     this.name = name;
-    this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+    this.password = password;
     this.creation = creation;
   }
 

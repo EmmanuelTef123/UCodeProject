@@ -66,24 +66,19 @@ public class LoginServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String username = request.getParameter("username");
-    String password = request.getParameter("password"); 
-    /* removed logic that checks for non-alpha numeric characters */
 
-    if (userStore.isUserRegistered(username)) {
-      User user = userStore.getUser(username);
-      if(BCrypt.checkpw(password, user.getPassword())) {
-        request.getSession().setAttribute("user", username);
-        response.sendRedirect("/conversations");
-      }
-      else {
-        request.setAttribute("error", "Invalid password.");
-        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-      }
-    }
-    else {
-      request.setAttribute("error", "That username was not found.");
+    if (!username.matches("[\\w*\\s*]*")) {
+      request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
       request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+      return;
     }
+
+    if (!userStore.isUserRegistered(username)) {
+      User user = new User(UUID.randomUUID(), username, null, Instant.now());
+      userStore.addUser(user);
+    }
+
+    request.getSession().setAttribute("user", username);
+    response.sendRedirect("/conversations");
   }
-  
 }
