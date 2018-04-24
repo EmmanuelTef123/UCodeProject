@@ -13,7 +13,7 @@
 // limitations under the License.
 
 package codeu.controller;
-
+import org.mindrot.jbcrypt.BCrypt;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;

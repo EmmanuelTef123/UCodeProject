@@ -1,5 +1,6 @@
 package codeu.controller;
 //needed to import to make compile when making new user
+import org.mindrot.jbcrypt.BCrypt;
 import codeu.model.data.User;
 import java.time.Instant;
 import java.util.UUID;

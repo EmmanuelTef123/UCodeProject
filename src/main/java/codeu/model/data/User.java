@@ -13,7 +13,7 @@
 // limitations under the License.
 
 package codeu.model.data;
-
+import org.mindrot.jbcrypt.BCrypt;
 import java.time.Instant;
 import java.util.UUID;
 

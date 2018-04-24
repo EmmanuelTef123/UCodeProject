@@ -13,16 +13,16 @@
 // limitations under the License.
 
 package codeu.controller;
-
+import org.mindrot.jbcrypt.BCrypt;
 import codeu.model.data.User;
-import codeu.model.store.basic.UserStore;
+import codeu.model.store.basic.UserStore; 
 import java.io.IOException;
 import java.time.Instant;
 import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse; 
 
 /** Servlet class responsible for the login page. */
 public class LoginServlet extends HttpServlet {
@@ -71,14 +71,15 @@ public class LoginServlet extends HttpServlet {
 
     if (userStore.isUserRegistered(username)) {
       User user = userStore.getUser(username);
+     
       if(BCrypt.checkpw(password, user.getPassword())) {
         request.getSession().setAttribute("user", username);
         response.sendRedirect("/conversations");
       }
       else {
         request.setAttribute("error", "Invalid password.");
-        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-      }
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response); 
+     }
     }
     else {
       request.setAttribute("error", "That username was not found.");
@@ -86,4 +87,10 @@ public class LoginServlet extends HttpServlet {
     }
   }
   
+public static void main(String [] args) {
+
+
+}
+
+
 }
