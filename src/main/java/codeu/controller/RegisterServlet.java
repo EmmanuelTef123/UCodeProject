@@ -39,7 +39,6 @@ public class RegisterServlet extends HttpServlet {
       //now we want to store the username and password
       String username = request.getParameter("username");
       String password = request.getParameter("password");
-      String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
       //checking to make sure that the username entered is only letter,numbers,spaces
       if (!username.matches("[\\w*\\s*]*")){
@@ -62,9 +61,7 @@ public class RegisterServlet extends HttpServlet {
       }
 
       //now when weve made sure that unique & proper username
-      User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
-      userStore.addUser(user);
-      //was: User user = new User(UUID.randomUUID(), username, password, Instant.now());
+      User user = new User(UUID.randomUUID(), username, password, Instant.now());
 
       response.sendRedirect("/login");
 
