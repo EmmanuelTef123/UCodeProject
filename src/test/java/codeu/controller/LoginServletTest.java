@@ -51,7 +51,7 @@ public class LoginServletTest {
 
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
   }
-
+/*
   @Test
   public void testDoPost_BadUsername() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("bad !@#$% username");
@@ -62,7 +62,7 @@ public class LoginServletTest {
         .setAttribute("error", "Please enter only letters, numbers, and spaces.");
     Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
   }
-
+*/
   @Test
   public void testDoPost_NewUser() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
