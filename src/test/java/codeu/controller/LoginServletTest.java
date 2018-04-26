@@ -88,7 +88,7 @@ public class LoginServletTest {
   @Test
   public void testDoPost_ExistingUser() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
-
+  
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(true);
     loginServlet.setUserStore(mockUserStore);

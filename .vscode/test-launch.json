@@ -1,0 +1,22 @@
+{
+    "run": [
+        {
+            "name": "chatapp",
+            "projectName": "chatapp",
+            "workingDirectory": "/Users/emmanuel/Documents/codeu_project_2018",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ],
+    "debug": [
+        {
+            "name": "chatapp",
+            "projectName": "chatapp",
+            "workingDirectory": "/Users/emmanuel/Documents/codeu_project_2018",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ]
+}
