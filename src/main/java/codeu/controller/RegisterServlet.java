@@ -1,5 +1,6 @@
 package codeu.controller;
 
+import org.mindrot.jbcrypt.BCrypt;
 import codeu.model.data.Conversation;
 import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
@@ -30,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
 
    String username = request.getParameter("username");
    String password = request.getParameter("password");
+   String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
    if (!username.matches("[\\w*\\s*]*")) {
      request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
@@ -43,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
      return;
    }
 
-   User user = new User(UUID.randomUUID(), username, password, Instant.now());
+   User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
    userStore.addUser(user);
 
    response.sendRedirect("/login");
