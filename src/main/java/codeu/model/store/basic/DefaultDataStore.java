@@ -13,7 +13,7 @@
 // limitations under the License.
 
 package codeu.model.store.basic;
-
+import org.mindrot.jbcrypt.BCrypt;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
@@ -98,9 +98,10 @@ public class DefaultDataStore {
     Collections.shuffle(randomUsernames);
 
     for (int i = 0; i < DEFAULT_USER_COUNT; i++) {
-      User user = new User(UUID.randomUUID(), randomUsernames.get(i), "password", Instant.now());
-      PersistentStorageAgent.getInstance().writeThrough(user);
-      users.add(user);
+        User user = new User(UUID.randomUUID(),
+         randomUsernames.get(i),
+         BCrypt.hashpw("password", BCrypt.gensalt()),
+         Instant.now());
     }
   }
 
