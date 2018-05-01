@@ -19,13 +19,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import codeu.model.data.Conversation;
 
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
 
+
+
 /** Servlet class responsible for loading test data. */
-public class TestDataServlet extends HttpServlet {
+public class ActivityServlet extends HttpServlet {
 
   /** Store class that gives access to Conversations. */
   private ConversationStore conversationStore;
@@ -73,27 +77,9 @@ public class TestDataServlet extends HttpServlet {
    * This function fires when a user requests the /testdata URL. It simply forwards the request to
    * testdata.jsp.
    */
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws IOException, ServletException {
-    request.getRequestDispatcher("/WEB-INF/view/testdata.jsp").forward(request, response);
-  }
-
-  /**
-   * This function fires when a user submits the testdata form. It loads test data if the user
-   * clicked the confirm button.
-   */
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws IOException, ServletException {
-    String confirmButton = request.getParameter("confirm");
-
-    if (confirmButton != null) {
-      userStore.loadTestData();
-      conversationStore.loadTestData();
-      messageStore.loadTestData();
-    }
-
-    response.sendRedirect("/");
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    List<Conversation> conversations = ConversationStore.getInstance().getAllConversations();
+    request.setAttribute("conversations", conversations);
+    request.getRequestDispatcher("/WEB-INF/view/activityFeed.jsp").forward(request,response);
   }
 }

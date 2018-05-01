@@ -1,31 +1,28 @@
-<% String[] recentActivity = {
-	"Emmanuel Registered for ChatItUp", "Emmanuel Messaged Fran", "Fran Messaged Emmanuel", "Kevin Registered", "Ashley Registered",
-	"Fran Messaged Ashley", "How's it going there Fran?", "Hi", "Hello", "What's up"
-	}; %>
-<!DOCTYPE html>
-<html>
-		<nav>
-				<a id="navTitle" href="/">Chat It Up!</a>
-				<a href="/conversations">Conversations</a>
-				<% if(request.getSession().getAttribute("user") != null){ %>
-				  <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-				<% } else{ %>
-				  <a href="/login">Login</a>
-				  <a href="/register">Register</a>
-				<% } %>
-				<a href="/about.jsp">About</a>
-			  </nav>
-	<head>
-		<title>Activity Feed</title>
-	</head>
-	<body>
-		<h1>Activity Feed</h1>
-		<p>Here's how people have been chatting it up!</p>
-		<ul>
-        Hi I'm Emmanuel
-        <% for(int i = 0; i < recentActivity.length; i++){ %>
-			<li><%= recentActivity[i] %></li>
-		<% } %>
-		</ul>
-	</body>
-</html>
+<%@ page import="java.util.List" %>
+<%@ page import="codeu.model.data.Conversation" %>
+<%@ page import="codeu.model.data.Message" %>
+<%@ page import="codeu.model.store.basic.UserStore" %>
+
+<h1>Conversations</h1>
+<% 
+List<Conversation> conversations = (List<Conversation>) request.getAttribute("conversations");
+if(conversations == null || conversations.isEmpty()){
+%>
+  <p>Start a new conversation</p>
+<%
+}
+else{
+%>
+ <ul>
+<%
+ for(Conversation conversation : conversations){ 
+%>
+  <li><a href="/ChatApp/chat/<%= conversation.getTitle() %>"><%= conversation.getTitle() %></a></li>
+<%
+ }
+%>
+ </ul>
+<%
+}
+%>
+<hr/>
