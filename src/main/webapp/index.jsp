@@ -23,9 +23,10 @@
         <% } else{ %>
           <a href="/login">Login</a>
           <a href="/register">Register</a>
+          <a href="/activityFeed">Activity</a>
         <% } %>
         <a href="/about.jsp">About</a>
-        <a href="/activityFeed.jsp">Activity</a>
+        
       </nav> 
 <head>
   <title>Hey Let's Chat!</title>
