@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
     <nav>
-        <a id="navTitle" href="/">CodeU Chat App</a>
+        <a id="navTitle" href="/">Chat It Up!</a>
         <a href="/conversations">Conversations</a>
         <% if(request.getSession().getAttribute("user") != null){ %>
           <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
@@ -25,9 +25,10 @@
           <a href="/register">Register</a>
         <% } %>
         <a href="/about.jsp">About</a>
-      </nav>
+        <a href="/activityFeed.jsp">Activity</a>
+      </nav> 
 <head>
-  <title>CodeU Chat App</title>
+  <title>Hey Let's Chat!</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -36,8 +37,8 @@
     <div
       style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
 
-      <h1>CodeU Chat App</h1>
-      <h2>Welcome!</h2>
+      <h1>Let's Chat!</h1>
+      <h2>Welcome to ChatItUp!</h2>
 
       <ul>
         <li><a href="/login">Login</a> to get started.</li>

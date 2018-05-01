@@ -15,11 +15,12 @@
 --%>
 <%@ page import="java.util.List" %>
 <%@ page import="codeu.model.data.Conversation" %>
+<%@ page import="codeu.model.data.Conversation" %>
 
 <!DOCTYPE html>
 <html>
     <nav>
-        <a id="navTitle" href="/">CodeU Chat App</a>
+        <a id="navTitle" href="/">Chat It Up!</a>
         <a href="/conversations">Conversations</a>
         <% if(request.getSession().getAttribute("user") != null){ %>
           <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
