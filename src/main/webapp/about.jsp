@@ -17,17 +17,17 @@
 <html>
     <nav>
         <a id="navTitle" href="/">Chat It Up!</a>
-        <a href="/conversations">Conversations</a>
-        <% if(request.getSession().getAttribute("user") != null){ %>
-          <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-        <% } else{ %>
+        <% if(request.getSession().getAttribute("user") == null){ %>
           <a href="/login">Login</a>
           <a href="/register">Register</a>
-          <a href="/activityFeed">Activity</a>
-
+        <% } else { %>
+          <a href="/activityFeed">Recent Chatter</a>
+          <a href="/conversations">Conversations</a>
+          <a> | </a>
+          <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+          <a href="/login">Logout</a>
         <% } %>
-        <a href="/about.jsp">About</a>
-      </nav>
+      </nav> 
 <head>
   <title>CodeU Chat App</title>
   <link rel="stylesheet" href="/css/main.css">
