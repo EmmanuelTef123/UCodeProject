@@ -16,19 +16,11 @@
 <!DOCTYPE html>
 <html>
     <nav>
-        <a id="navTitle" href="/">Chat It Up!</a>
-        <a href="/conversations">Conversations</a>
-        <% if(request.getSession().getAttribute("user") != null){ %>
-          <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-        <% } else{ %>
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
-          <a href="/activityFeed">Activity</a>
-        <% } %>
-        <a href="/about.jsp">About</a>
-      </nav>
+        <a>Chat It Up!</a>
+    </nav>
 <head>
  <title>Login</title>
+
  <link rel="stylesheet" href="/css/main.css">
  <style>
    label {
@@ -38,17 +30,6 @@
  </style>
 </head>
 <body>
-
- <!--<nav>
-   <a id="navTitle" href="/">CodeU Chat App</a>
-   <a href="/conversations">Conversations</a>
-   <% if(request.getSession().getAttribute("user") != null){ %>
-     <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-   <% } else{ %>
-     <a href="/login">Login</a>
-   <% } %>
-   <a href="/about">About</a>
- </nav> -->
  
  <div id="container">
    <h1>Login</h1>
@@ -66,6 +47,7 @@
      <br/><br/>
      <button type="submit">Login</button>
    </form>
+   <p>Don't have an account yet?<a href="/register"> Register Here!</a></p>
  </div>
 </body>
 </html>

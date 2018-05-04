@@ -12,17 +12,9 @@
 </head>
 <body>
 
- <nav>
-   <a id="navTitle" href="/">Chat It Up!</a>
-   <a href="/conversations">Conversations</a>
-   <% if(request.getSession().getAttribute("user") != null){ %>
-     <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-   <% } else{ %>
-     <a href="/login">Login</a>
-     <a href="/activityFeed">Activity</a>
-   <% } %>
+  <nav>
+   <a>Chat It Up!</a>
  </nav>
-
  <div id="container">
    <h1>Register</h1>
 
@@ -39,6 +31,7 @@
      <br/><br/>
      <button type="submit">Submit</button>
    </form>
+   <p>Already have an account? <a href="/login">Login Here!</a></p>
  </div>
 </body>
 </html>

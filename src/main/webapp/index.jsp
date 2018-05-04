@@ -17,19 +17,21 @@
 <html>
     <nav>
         <a id="navTitle" href="/">Chat It Up!</a>
-        <a href="/conversations">Conversations</a>
-        <% if(request.getSession().getAttribute("user") != null){ %>
-          <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-        <% } else{ %>
+        <% if(request.getSession().getAttribute("user") == null){ %>
+          <a href="/about.jsp">About</a>
           <a href="/login">Login</a>
           <a href="/register">Register</a>
-          <a href="/activityFeed">Activity</a>
+        <% } else { %>
+          <a href="/about.jsp">About</a>
+          <a href="/activityFeed">Recent Chatter</a>
+          <a href="/conversations">Conversations</a>
+          <a> | </a>
+          <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+          <a href="/login">Logout</a>
         <% } %>
-        <a href="/about.jsp">About</a>
-        
       </nav> 
 <head>
-  <title>Hey Let's Chat!</title>
+  <title>Chat It Up: Communication Made Simple</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -38,17 +40,14 @@
     <div
       style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
 
-      <h1>Let's Chat!</h1>
-      <h2>Welcome to ChatItUp!</h2>
-
+      <h1>Welcome To Chat It Up!</h1>
+      <h2>Chat It Up: Connecting Made Simple</h2>
       <ul>
-        <li><a href="/login">Login</a> to get started.</li>
-        <li>Go to the <a href="/conversations">conversations</a> page to
-            create or join a conversation.</li>
-        <li>View the <a href="/about.jsp">about</a> page to learn more about the
+          <li>View the <a href="/about.jsp">About</a> page to learn more about the
             project.</li>
-        <li>You can <a href="/testdata">load test data</a> to fill the site with
-            example data.</li>
+        <li><a href="/login">Login</a> to access your account.</li>
+        <li>Go to the <a href="/register">Register</a> page to
+            create a new account.</li>
       </ul>
     </div>
   </div>
