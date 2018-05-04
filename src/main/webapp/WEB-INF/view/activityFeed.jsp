@@ -61,8 +61,8 @@ This code sets the style of the page to be a premade stylesheet and sets title.
 						<%
 						for(User user : users){
 						%>
-						<li>User 
-						"<%= user.getName() %>" was made at time <%=user.getCreationTime()%> </li>
+						<li>
+						<%= user.getName() %> joined the Chat It Up community on <%=user.getCreationTime()%> </li>
 						<%
 						}
 						%>
@@ -84,8 +84,8 @@ This code sets the style of the page to be a premade stylesheet and sets title.
 						<%
 						for(Message message : messages){
 						%>
-						<li>User 
-						"<%= message.getContent() %>" was made at time <%=message.getCreationTime()%> </li>
+						<li>Someone on Chat It Up talked about  
+						"<%= message.getContent() %>" at time <%=message.getCreationTime()%> </li>
 						<%
 						}
 						%>
