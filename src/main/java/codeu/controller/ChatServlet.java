@@ -30,9 +30,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
+import java.util.HashMap;
+import java.util.Map;
 
 /** Servlet class responsible for the chat page. */
 public class ChatServlet extends HttpServlet {
+
+  HashMap<String, String> keyWords = new HashMap<String, String>();
+  //making the keywords and the urls of the asscoaited pictures
+  String dog = "dog";
+  String dogUrl = "https://www.aspcapetinsurance.com/media/1064/mountain-dog.jpg";
+  String cat = "cat";
+  String catUrl = "https://i.pinimg.com/originals/19/2d/68/192d6886a2ef123406c1786c56ebb1be.jpg";
+
 
   /** Store class that gives access to Conversations. */
   private ConversationStore conversationStore;
@@ -43,6 +53,9 @@ public class ChatServlet extends HttpServlet {
   /** Store class that gives access to Users. */
   private UserStore userStore;
 
+  //will be the vairable tht represents the image url to send to frontend
+  private String image;
+
   /** Set up state for handling chat requests. */
   @Override
   public void init() throws ServletException {
@@ -50,6 +63,9 @@ public class ChatServlet extends HttpServlet {
     setConversationStore(ConversationStore.getInstance());
     setMessageStore(MessageStore.getInstance());
     setUserStore(UserStore.getInstance());
+    //adding associations
+    keyWords.put(dog , dogUrl);
+    keyWords.put(cat, catUrl);
   }
 
   /**
@@ -101,6 +117,7 @@ public class ChatServlet extends HttpServlet {
 
     request.setAttribute("conversation", conversation);
     request.setAttribute("messages", messages);
+    request.setAttribute("image", image);
     request.getRequestDispatcher("/WEB-INF/view/chat.jsp").forward(request, response);
   }
 
@@ -142,6 +159,18 @@ public class ChatServlet extends HttpServlet {
 
     // this removes any HTML from the message content
     String cleanedMessageContent = Jsoup.clean(messageContent, Whitelist.none());
+
+    //here i split the message around spaces
+    String[] splitMessage = cleanedMessageContent.toLowerCase().split(" ");
+    //going through the message and seeing
+    for (int currentWordCount = 0; currentWordCount < splitMessage.length; currentWordCount++){
+      if (keyWords.keySet().contains(splitMessage[currentWordCount])){
+        image = keyWords.get(splitMessage[currentWordCount]);
+        //break;
+      }
+    }
+
+
 
     Message message =
         new Message(

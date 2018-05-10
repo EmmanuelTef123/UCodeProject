@@ -20,6 +20,7 @@
 <%
 Conversation conversation = (Conversation) request.getAttribute("conversation");
 List<Message> messages = (List<Message>) request.getAttribute("messages");
+String url = (String) request.getAttribute("image");
 %>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
           <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
           <a href="/login">Logout</a>
         <% } %>
-      </nav> 
+      </nav>
 <head>
   <title><%= conversation.getTitle() %></title>
   <link rel="stylesheet" href="/css/main.css" type="text/css">
@@ -69,6 +70,12 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     <hr/>
 
     <div id="chat">
+      <% if(url != null) { %>
+       <img src = <%= url %> >
+      <% } else { %>
+      <% } %>
+
+
       <ul>
     <%
       for (Message message : messages) {
