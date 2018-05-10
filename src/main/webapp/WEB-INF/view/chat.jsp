@@ -70,12 +70,6 @@ String url = (String) request.getAttribute("image");
     <hr/>
 
     <div id="chat">
-      <% if(url != null) { %>
-       <img src = <%= url %> >
-      <% } else { %>
-      <% } %>
-
-
       <ul>
     <%
       for (Message message : messages) {
@@ -86,6 +80,10 @@ String url = (String) request.getAttribute("image");
     <%
       }
     %>
+      <% if(url != null) { %>
+        <img src=<%= url %> height= "50" width = "50">
+      <% } else { %>
+      <% } %>
       </ul>
     </div>
 

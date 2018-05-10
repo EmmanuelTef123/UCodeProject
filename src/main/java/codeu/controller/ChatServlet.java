@@ -42,6 +42,21 @@ public class ChatServlet extends HttpServlet {
   String dogUrl = "https://www.aspcapetinsurance.com/media/1064/mountain-dog.jpg";
   String cat = "cat";
   String catUrl = "https://i.pinimg.com/originals/19/2d/68/192d6886a2ef123406c1786c56ebb1be.jpg";
+  String beach = "beach";
+  String beachUrl = "https://i.ytimg.com/vi/PFYXdyLs57o/maxresdefault.jpg";
+  String plane = "plane";
+  String planeUrl = "https://i.pinimg.com/originals/b2/58/cc/b258cc8976aafff5b8919409cc828e4d.jpg";
+  String pool = "pool";
+  String poolUrl = "https://thumb1.shutterstock.com/display_pic_with_logo/76168/705108763/stock-vector-cartoon-illustration-of-six-kids-in-a-pool-705108763.jpg";
+  String birthday = "birthday";
+  String birthdayUrl = "https://i.pinimg.com/736x/d4/2a/d1/d42ad11452465993a13b561383efb2e2--birthday-wishes-happy-birthday.jpg";
+  String congrats = "congrats";
+  String congratulations = "congratulations";
+  String congratsUrl = "http://misspeggysmusic.com/wp-content/uploads/2011/03/congrats.jpg";
+  String hungry = "hungry";
+  String hungryUrl = "https://thumbs.dreamstime.com/b/cartoon-hungry-man-illustration-holding-knife-fork-48224781.jpg";
+  String food = "food";
+  String foodUrl = "https://i.pinimg.com/736x/7e/57/5f/7e575f92a9fb1d31ee0d1d9e33bf730b--kraft-foods-i-love-food.jpg";
 
 
   /** Store class that gives access to Conversations. */
@@ -66,6 +81,14 @@ public class ChatServlet extends HttpServlet {
     //adding associations
     keyWords.put(dog , dogUrl);
     keyWords.put(cat, catUrl);
+    keyWords.put(beach, beachUrl);
+    keyWords.put(plane, planeUrl);
+    keyWords.put(pool, poolUrl);
+    keyWords.put(birthday, birthdayUrl);
+    keyWords.put(congrats, congratsUrl);
+    keyWords.put(congratulations, congratsUrl);
+    keyWords.put(hungry, hungryUrl);
+    keyWords.put(food, foodUrl);
   }
 
   /**
