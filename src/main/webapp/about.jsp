@@ -27,7 +27,7 @@
           <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
           <a href="/login">Logout</a>
         <% } %>
-      </nav> 
+      </nav>
 <head>
   <title>CodeU Chat App</title>
   <link rel="stylesheet" href="/css/main.css">

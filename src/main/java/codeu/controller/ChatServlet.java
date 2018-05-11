@@ -30,9 +30,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
+import java.util.HashMap;
+import java.util.Map;
 
 /** Servlet class responsible for the chat page. */
 public class ChatServlet extends HttpServlet {
+
+  HashMap<String, String> keyWords = new HashMap<String, String>();
+  //making the keywords and the urls of the asscoaited pictures
+  String dog = "dog";
+  String dogUrl = "https://www.aspcapetinsurance.com/media/1064/mountain-dog.jpg";
+  String cat = "cat";
+  String catUrl = "https://i.pinimg.com/originals/19/2d/68/192d6886a2ef123406c1786c56ebb1be.jpg";
+  String beach = "beach";
+  String beachUrl = "https://i.ytimg.com/vi/PFYXdyLs57o/maxresdefault.jpg";
+  String plane = "plane";
+  String planeUrl = "https://i.pinimg.com/originals/b2/58/cc/b258cc8976aafff5b8919409cc828e4d.jpg";
+  String pool = "pool";
+  String poolUrl = "https://thumb1.shutterstock.com/display_pic_with_logo/76168/705108763/stock-vector-cartoon-illustration-of-six-kids-in-a-pool-705108763.jpg";
+  String birthday = "birthday";
+  String birthdayUrl = "https://i.pinimg.com/736x/d4/2a/d1/d42ad11452465993a13b561383efb2e2--birthday-wishes-happy-birthday.jpg";
+  String congrats = "congrats";
+  String congratulations = "congratulations";
+  String congratsUrl = "http://misspeggysmusic.com/wp-content/uploads/2011/03/congrats.jpg";
+  String hungry = "hungry";
+  String hungryUrl = "https://thumbs.dreamstime.com/b/cartoon-hungry-man-illustration-holding-knife-fork-48224781.jpg";
+  String food = "food";
+  String foodUrl = "https://i.pinimg.com/736x/7e/57/5f/7e575f92a9fb1d31ee0d1d9e33bf730b--kraft-foods-i-love-food.jpg";
+
 
   /** Store class that gives access to Conversations. */
   private ConversationStore conversationStore;
@@ -43,6 +68,9 @@ public class ChatServlet extends HttpServlet {
   /** Store class that gives access to Users. */
   private UserStore userStore;
 
+  //will be the vairable tht represents the image url to send to frontend
+  private String image;
+
   /** Set up state for handling chat requests. */
   @Override
   public void init() throws ServletException {
@@ -50,6 +78,17 @@ public class ChatServlet extends HttpServlet {
     setConversationStore(ConversationStore.getInstance());
     setMessageStore(MessageStore.getInstance());
     setUserStore(UserStore.getInstance());
+    //adding associations
+    keyWords.put(dog , dogUrl);
+    keyWords.put(cat, catUrl);
+    keyWords.put(beach, beachUrl);
+    keyWords.put(plane, planeUrl);
+    keyWords.put(pool, poolUrl);
+    keyWords.put(birthday, birthdayUrl);
+    keyWords.put(congrats, congratsUrl);
+    keyWords.put(congratulations, congratsUrl);
+    keyWords.put(hungry, hungryUrl);
+    keyWords.put(food, foodUrl);
   }
 
   /**
@@ -101,6 +140,7 @@ public class ChatServlet extends HttpServlet {
 
     request.setAttribute("conversation", conversation);
     request.setAttribute("messages", messages);
+    request.setAttribute("image", image);
     request.getRequestDispatcher("/WEB-INF/view/chat.jsp").forward(request, response);
   }
 
@@ -142,6 +182,18 @@ public class ChatServlet extends HttpServlet {
 
     // this removes any HTML from the message content
     String cleanedMessageContent = Jsoup.clean(messageContent, Whitelist.none());
+
+    //here i split the message around spaces
+    String[] splitMessage = cleanedMessageContent.toLowerCase().split(" ");
+    //going through the message and seeing
+    for (int currentWordCount = 0; currentWordCount < splitMessage.length; currentWordCount++){
+      if (keyWords.keySet().contains(splitMessage[currentWordCount])){
+        image = keyWords.get(splitMessage[currentWordCount]);
+        //break;
+      }
+    }
+
+
 
     Message message =
         new Message(
