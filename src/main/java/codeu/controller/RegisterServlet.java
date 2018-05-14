@@ -31,6 +31,8 @@ public class RegisterServlet extends HttpServlet {
 
    String username = request.getParameter("username");
    String password = request.getParameter("password");
+   String confirmPassword = request.getParameter("confirmPassword");
+
    String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
    if (!username.matches("[\\w*\\s*]*")) {
@@ -44,7 +46,12 @@ public class RegisterServlet extends HttpServlet {
      request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
      return;
    }
-
+   
+   if (!password.equals(confirmPassword)) {
+    request.setAttribute("error", "Those passwords didn't match. Try again.");
+    request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
+    return;
+  }
    User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
    userStore.addUser(user);
 
