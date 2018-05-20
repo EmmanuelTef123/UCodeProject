@@ -81,13 +81,14 @@ public class ChatServletTest {
         .thenReturn(fakeConversation);
 
     List<Message> fakeMessageList = new ArrayList<>();
+    String picture = null;
     fakeMessageList.add(
         new Message(
             UUID.randomUUID(),
             fakeConversationId,
             UUID.randomUUID(),
             "test message",
-            Instant.now()));
+            Instant.now(), null));
     Mockito.when(mockMessageStore.getMessagesInConversation(fakeConversationId))
         .thenReturn(fakeMessageList);
 

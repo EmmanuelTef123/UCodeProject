@@ -121,10 +121,11 @@ public class DefaultDataStore {
       Conversation conversation = getRandomElement(conversations);
       User author = getRandomElement(users);
       String content = getRandomMessageContent();
+      String picture = null;
 
       Message message =
           new Message(
-              UUID.randomUUID(), conversation.getId(), author.getId(), content, Instant.now());
+              UUID.randomUUID(), conversation.getId(), author.getId(), content, Instant.now(), picture);
       PersistentStorageAgent.getInstance().writeThrough(message);
       messages.add(message);
     }
