@@ -79,10 +79,9 @@ String url = (String) request.getAttribute("image");
       <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
       <% if(message.getPicture() != null) { %>
       <img src=<%= message.getPicture() %> height= "50" width = "50">
-      <% } else {
-     } %>
-    <%
-      }
+      <% } else { %>
+    <% } %>
+    <%}
     %>
 
 
