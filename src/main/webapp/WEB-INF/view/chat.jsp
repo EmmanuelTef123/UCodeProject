@@ -76,11 +76,29 @@ String url = (String) request.getAttribute("image");
         String author = UserStore.getInstance()
           .getUser(message.getAuthorId()).getName();
     %>
+    <% if(request.getSession().getAttribute("user").equals(author)){ %>
+
+
+        <li align="right"><strong ><%= author %>:</strong> <%= message.getContent() %></li>
+        <% if(message.getPicture() != null) { %>
+        <li align="right"><img src=<%= message.getPicture() %> height= "50" width = "50"></li>
+        <% } else { %>
+        <% } %>
+
+
+    <% } else { %>
+      <hgroup class="speech-bubble">
+          <h5>SitePoint Rocks!</h5>
+
+        </hgroup> = $0
       <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
       <% if(message.getPicture() != null) { %>
       <img src=<%= message.getPicture() %> height= "50" width = "50">
       <% } else { %>
+      <% } %>
+
     <% } %>
+
     <%}
     %>
 

@@ -165,7 +165,7 @@ public class PersistentDataStore {
     messageEntity.setProperty("author_uuid", message.getAuthorId().toString());
     messageEntity.setProperty("content", message.getContent());
     messageEntity.setProperty("creation_time", message.getCreationTime().toString());
-    messageEntity.setProperty("picture", "https://i.pinimg.com/originals/b2/58/cc/b258cc8976aafff5b8919409cc828e4d.jpg");
+    messageEntity.setProperty("picture", message.getPicture());
     datastore.put(messageEntity);
   }
 
