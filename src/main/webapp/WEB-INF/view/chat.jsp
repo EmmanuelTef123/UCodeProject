@@ -70,30 +70,37 @@ String url = (String) request.getAttribute("image");
     <hr/>
 
     <div id="chat">
-      <ul>
+      <!--<ul>-->
     <%
       for (Message message : messages) {
         String author = UserStore.getInstance()
           .getUser(message.getAuthorId()).getName();
     %>
     <% if(request.getSession().getAttribute("user").equals(author)){ %>
-
-
-        <li align="right"><strong ><%= author %>:</strong> <%= message.getContent() %></li>
-        <% if(message.getPicture() != null) { %>
-        <li align="right"><img src=<%= message.getPicture() %> height= "50" width = "50"></li>
+        <div align="right" id="myTexts">
+          <hgroup class="speech-bubbles">
+            <h5><%= message.getContent() %></h5>
+          </hgroup>
+          <br>
+          <strong><%= author %>:</strong>
+          <% if(message.getPicture() != null) { %>
+          <img align="right" src=<%= message.getPicture() %> height= "50" width = "50">
+        </div>
         <% } else { %>
         <% } %>
 
 
-    <% } else { %>
-      <hgroup class="speech-bubble">
-          <h5>SitePoint Rocks!</h5>
 
-        </hgroup> = $0
-      <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
-      <% if(message.getPicture() != null) { %>
-      <img src=<%= message.getPicture() %> height= "50" width = "50">
+    <% } else { %>
+      <div align="left" id="otherText">
+        <hgroup class="speech-bubble">
+            <h5><%= message.getContent() %></h5>
+        </hgroup>
+          <br>
+        <strong><%= author %>:</strong>
+        <% if(message.getPicture() != null) { %>
+        <img src=<%= message.getPicture() %> height= "50" width = "50">
+      </div>
       <% } else { %>
       <% } %>
 
@@ -103,7 +110,7 @@ String url = (String) request.getAttribute("image");
     %>
 
 
-      </ul>
+     <!-- </ul>-->
     </div>
 
     <hr/>

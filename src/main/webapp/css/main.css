@@ -66,22 +66,49 @@ p.speech:after {
 .speech-bubble {
   position: relative;
   background: #ccccff;
+  left: 50px;
+  width: 150px;
+  height: 90px;
   border-radius: .4em;
 }
 
 .speech-bubble:after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  left: 0;
+  top: 50%;
   width: 0;
   height: 0;
-  border: 61px solid transparent;
-  border-top-color: #ccccff;
+  border: 37px solid transparent;
+  border-right-color: #ccccff;
   border-bottom: 0;
   border-left: 0;
-  margin-left: -30.5px;
-  margin-bottom: -61px;
+  margin-left: -18.5px;
+  margin-bottom: -37px;
+}
+
+.speech-bubbles {
+  position: relative;
+  background: #ffff12;
+  right: 50px;
+  width: 150px;
+  height: 90px;
+  border-radius: .4em;
+}
+
+.speech-bubbles:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border: 37px solid transparent;
+  border-top-color: #ffff12;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -18.5px;
+  margin-bottom: -37px;
 }
 
 nav a {
