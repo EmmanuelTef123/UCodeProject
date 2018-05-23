@@ -13,7 +13,8 @@
 <body>
 
   <nav>
-   <a>Chat It Up!</a>
+   <a>Chat It Up: Connecting Made Simple </a>
+
  </nav>
  <div id="container">
    <h1>Register</h1>
@@ -28,6 +29,8 @@
      <br/>
      <label for="password">Password: </label>
      <input type="password" name="password" id="password">
+     <label for="confirmPassword">Confirm Password: </label>
+     <input type="password" name="confirmPassword" id="confirmPassword">
      <br/><br/>
      <button type="submit">Submit</button>
    </form>

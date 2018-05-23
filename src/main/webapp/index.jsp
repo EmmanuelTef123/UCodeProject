@@ -51,5 +51,7 @@
       </ul>
     </div>
   </div>
+  <center><img src="/images/mainPageChatImage.gif" alt="Girl in a jacket" width="500" height="600"></center>
+
 </body>
 </html>
