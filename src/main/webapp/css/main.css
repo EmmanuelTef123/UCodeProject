@@ -90,7 +90,7 @@ p.speech:after {
 .speech-bubbles {
   position: relative;
   background: #ffff12;
-  right: 50px;
+  float: right;
   width: 150px;
   height: 90px;
   border-radius: .4em;
@@ -110,6 +110,7 @@ p.speech:after {
   margin-left: -18.5px;
   margin-bottom: -37px;
 }
+
 
 nav a {
   color: white;

@@ -77,7 +77,7 @@ String url = (String) request.getAttribute("image");
           .getUser(message.getAuthorId()).getName();
     %>
     <% if(request.getSession().getAttribute("user").equals(author)){ %>
-        <div align="right" id="myTexts">
+        <!--<div align="right" id="myTexts">
           <hgroup class="speech-bubbles">
             <h5><%= message.getContent() %></h5>
           </hgroup>
@@ -87,22 +87,52 @@ String url = (String) request.getAttribute("image");
           <img align="right" src=<%= message.getPicture() %> height= "50" width = "50">
         </div>
         <% } else { %>
-        <% } %>
+        <% } %>-->
+    <table float="right" id="myText" cellspacing="50">
+      <td float="right" align="right">
+        <div float="right" align="right"><% if(message.getPicture() != null) { %>
+                <img src=<%= message.getPicture() %> height= "50" width = "50">
+            <% } else { %>
+            <% } %></div>
+      </td>
+      <td  float="right" align="right">
+        <div align="right"><hgroup class="speech-bubbles">
+              <h5 text-align: right><%= message.getContent() %></h5>
+          </hgroup></div>
+          <!--<strong><%= author %>:</strong>-->
+      </td>
 
 
 
+    </table>
+
+    <hr>
     <% } else { %>
-      <div align="left" id="otherText">
-        <hgroup class="speech-bubble">
-            <h5><%= message.getContent() %></h5>
-        </hgroup>
-          <br>
-        <strong><%= author %>:</strong>
-        <% if(message.getPicture() != null) { %>
-        <img src=<%= message.getPicture() %> height= "50" width = "50">
+    <table id="otherText" cellspacing="50">
+      <td align="left">
+        <div align="left"><hgroup class="speech-bubble">
+              <h5><%= message.getContent() %></h5>
+          </hgroup></div>
+          <strong><%= author %>:</strong>
+      </td>
+      <td>
+        <div align="left"><% if(message.getPicture() != null) { %>
+                <img align = "left" src=<%= message.getPicture() %> height= "50" width = "50">
+            <% } else { %>
+            <% } %></div>
+      </td>
+
+    </table>
+  <hr>
+
+      <!--<div style="inline-block" align="left" id="otherText" >
+
       </div>
-      <% } else { %>
-      <% } %>
+      <div id="otherpicture">
+
+          <br>
+
+      </div>-->
 
     <% } %>
 
