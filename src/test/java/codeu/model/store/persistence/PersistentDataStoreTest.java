@@ -42,14 +42,15 @@ public class PersistentDataStoreTest {
     String nameOne = "test_username_one";
     String passwordOne = "test_password_one";
     Instant creationOne = Instant.ofEpochMilli(1000);
-    User inputUserOne = new User(idOne, nameOne, passwordOne, creationOne);
+    String idPic = "https://st3.depositphotos.com/1007168/14191/v/1600/depositphotos_141915462-stock-illustration-smiling-steak-cartoon.jpg";
+    User inputUserOne = new User(idOne, nameOne, passwordOne, creationOne, null);
 
     UUID idTwo = UUID.randomUUID();
     String nameTwo = "test_username_two";
     String passwordTwo = "test_password_two";
 
     Instant creationTwo = Instant.ofEpochMilli(2000);
-    User inputUserTwo = new User(idTwo, nameTwo,passwordTwo, creationTwo);
+    User inputUserTwo = new User(idTwo, nameTwo,passwordTwo, creationTwo, null);
 
     // save
     persistentDataStore.writeThrough(inputUserOne);
@@ -64,12 +65,15 @@ public class PersistentDataStoreTest {
     Assert.assertEquals(nameOne, resultUserOne.getName());
     Assert.assertEquals(passwordOne, resultUserOne.getPassword());
     Assert.assertEquals(creationOne, resultUserOne.getCreationTime());
+    Assert.assertEquals(null, resultUserOne.getPicture());
 
     User resultUserTwo = resultUsers.get(1);
     Assert.assertEquals(idTwo, resultUserTwo.getId());
     Assert.assertEquals(nameTwo, resultUserTwo.getName());
     Assert.assertEquals(passwordTwo, resultUserTwo.getPassword());
     Assert.assertEquals(creationTwo, resultUserTwo.getCreationTime());
+    Assert.assertEquals(null, resultUserTwo.getPicture());
+
   }
 
   @Test

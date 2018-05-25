@@ -17,10 +17,12 @@
 <%@ page import="codeu.model.data.Conversation" %>
 <%@ page import="codeu.model.data.Message" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
+<%@ page import="codeu.model.data.User" %>
 <%
 Conversation conversation = (Conversation) request.getAttribute("conversation");
 List<Message> messages = (List<Message>) request.getAttribute("messages");
 String url = (String) request.getAttribute("image");
+UserStore currentUserStash = UserStore.getInstance();
 %>
 
 <!DOCTYPE html>
@@ -73,9 +75,16 @@ String url = (String) request.getAttribute("image");
       <!--<ul>-->
     <%
       for (Message message : messages) {
+        //User userCurrent = (User) UserStore.getInstance()
+          //.getUser(message.getAuthorId());
         String author = UserStore.getInstance()
           .getUser(message.getAuthorId()).getName();
+          User currentUser = (User) UserStore.getInstance()
+          .getUser(message.getAuthorId());
+
     %>
+
+
     <% if(request.getSession().getAttribute("user").equals(author)){ %>
         <!--<div align="right" id="myTexts">
           <hgroup class="speech-bubbles">
@@ -88,7 +97,7 @@ String url = (String) request.getAttribute("image");
         </div>
         <% } else { %>
         <% } %>-->
-    <table float="right" id="myText" cellspacing="50">
+    <table style="margin-left: auto; margin-right: 0;" id="myText" cellspacing="50">
       <td float="right" align="right">
         <div float="right" align="right"><% if(message.getPicture() != null) { %>
                 <img src=<%= message.getPicture() %> height= "50" width = "50">
@@ -106,7 +115,7 @@ String url = (String) request.getAttribute("image");
 
     </table>
 
-    <hr>
+
     <% } else { %>
     <table id="otherText" cellspacing="50">
       <td align="left">
@@ -114,6 +123,12 @@ String url = (String) request.getAttribute("image");
               <h5><%= message.getContent() %></h5>
           </hgroup></div>
           <strong><%= author %>:</strong>
+          <% if(currentUser.getPicture() != null) { %>
+                <img src=<%= currentUser.getPicture() %> height= "50" width = "50">
+            <% } else { %>
+            <% } %>
+
+
       </td>
       <td>
         <div align="left"><% if(message.getPicture() != null) { %>
@@ -123,7 +138,7 @@ String url = (String) request.getAttribute("image");
       </td>
 
     </table>
-  <hr>
+
 
       <!--<div style="inline-block" align="left" id="otherText" >
 

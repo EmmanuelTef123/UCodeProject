@@ -96,12 +96,14 @@ public class DefaultDataStore {
 
     List<String> randomUsernames = getRandomUsernames();
     Collections.shuffle(randomUsernames);
+    //all picture for degault will be null
+    String idPic = null;
 
     for (int i = 0; i < DEFAULT_USER_COUNT; i++) {
         User user = new User(UUID.randomUUID(),
          randomUsernames.get(i),
          BCrypt.hashpw("password", BCrypt.gensalt()),
-         Instant.now());
+         Instant.now(), idPic);
     }
   }
 
