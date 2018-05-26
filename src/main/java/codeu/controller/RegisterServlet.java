@@ -1,6 +1,6 @@
 package codeu.controller;
 
-import org.mindrot.jbcrypt.BCrypt;
+import org.mindrot.jbcrypt.BCrypt; 
 import codeu.model.data.Conversation;
 import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
@@ -66,6 +66,7 @@ public class RegisterServlet extends HttpServlet {
    String confirmPassword = request.getParameter("confirmPassword");
    String humanVerification = request.getParameter("humanVerification");
    String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+
    String idPic = request.getParameter("idPic");
 
 
@@ -141,8 +142,8 @@ public class RegisterServlet extends HttpServlet {
     answers[7] = rPic7;
     answers[8] = rPic8;
     answers[9] = rPic9;
-
   }
+ 
 
 
   /**

@@ -1,5 +1,7 @@
+
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Random" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -63,6 +65,7 @@
      <label for="humanVerification">Human Verification: </label>
      <input type="text" name="humanVerification" id="humanVerification">
      <p>(To get a new image, refresh this page)</p>
+
 
      <br/><br/>
 
