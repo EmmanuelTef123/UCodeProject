@@ -1,3 +1,7 @@
+
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Random" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +18,6 @@
 
   <nav>
    <a>Chat It Up: Connecting Made Simple </a>
-
  </nav>
  <div id="container">
    <h1>Register</h1>
@@ -27,11 +30,25 @@
      <label for="username">Username: </label>
      <input type="text" name="username" id="username">
      <br/>
+
      <label for="password">Password: </label>
      <input type="password" name="password" id="password">
+
      <label for="confirmPassword">Confirm Password: </label>
      <input type="password" name="confirmPassword" id="confirmPassword">
      <br/><br/>
+     
+     <%String currentPic = (String) request.getAttribute("currentPicAddress"); 
+     System.out.println(currentPic);
+     %>
+     <center><img src=
+      <%=currentPic%> alt="registrationTestPic!" width="350" height="350"></center>
+
+     <label for="humanVerification">Human Verification: </label>
+     <input type="text" name="humanVerification" id="humanVerification">
+     <p>(To get a new image, refresh this page)<p>
+     <br/><br/>
+
      <button type="submit">Submit</button>
    </form>
    <p>Already have an account? <a href="/login">Login Here!</a></p>

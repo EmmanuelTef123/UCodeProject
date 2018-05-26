@@ -144,7 +144,7 @@ public class PersistentDataStore {
     }
 
     return messages;
-  }
+  } 
 
   /** Write a User object to the Datastore service. */
   public void writeThrough(User user) {
