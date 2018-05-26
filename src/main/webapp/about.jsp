@@ -64,11 +64,7 @@
       </ul>
 
       <p>
-        This is your code now. Get familiar with it and get comfortable
-        working with your team to plan and make changes. Start by updating the
-        homepage and this about page to tell your users more about your team.
-        This page should also be used to describe the features and improvements
-        you've added.
+        This is your community! Feel free to post and tell your friends about ChatItUp: Connecting Made Simple.
       </p>
     </div>
   </div>
