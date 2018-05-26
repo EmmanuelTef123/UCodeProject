@@ -39,23 +39,28 @@
 
       <h1>About the CodeU Chat App</h1>
       <p>
-        This is an example chat application designed to be a starting point
-        for your CodeU project team work. Here's some stuff to think about:
+        This is Chat It Up! Created by Emmanuel Teferi and Fran Penaranda, this 
+        application is designed to be the next step in major chatting applications. 
+        We want to create a secure chat app where users can easily communicate with 
+        friends and check if there friends are users and what they are saying. 
+        We also want this app to show message appropriate pictures to enhance 
+        the chat experience. SPECIAL SHOUTOUT TO OUR ADVISOR KEVIN WANG FOR THE 
+        AROUND THE CLOCK SUPPORT!
       </p>
 
       <ul>
-        <li><strong>Algorithms and data structures:</strong> We've made the app
-            and the code as simple as possible. You will have to extend the
-            existing data structures to support your enhancements to the app,
-            and also make changes for performance and scalability as your app
-            increases in complexity.</li>
-        <li><strong>Look and feel:</strong> The focus of CodeU is on the Java
-          side of things, but if you're particularly interested you might use
-          HTML, CSS, and JavaScript to make the chat app prettier.</li>
-        <li><strong>Customization:</strong> Think about a group you care about.
-          What needs do they have? How could you help? Think about technical
-          requirements, privacy concerns, and accessibility and
-          internationalization.</li>
+        <li><strong>Picture messages:</strong> We've redesigned messaging as you know it to 
+          have automatic visual display. Users have their own log in icon and our message
+          design layout is top of the line! </li>
+        <li><strong>Look and feel:</strong> We updated the design and user experience 
+          from the basic layout we were given. New fonts, color schemes, navigations, 
+          pages, and more have been altered to enhance your experience. An activity feed 
+        feature allows you to see who else is in our Chat It Up community and see what 
+        they are talking about. </li>
+        <li><strong>Security:</strong> We have made sure that no user can access 
+          the app before registering and loging in. We encrypt all stored passwords to 
+          secure the information of our users. We also have a log in test designed
+          to prevent malicious server attacks by making many fake users (human verification)</li>
       </ul>
 
       <p>
