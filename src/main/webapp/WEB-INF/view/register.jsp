@@ -39,7 +39,6 @@
      <input type="password" name="confirmPassword" id="confirmPassword">
      <br/><br/>
 
-     <form>
         <p>Please select the food you asscoiate yourelf with the most:</p>
         <div>
           <input type="radio" id="contactChoice1"
@@ -52,7 +51,7 @@
                  name="idPic" value="https://st2.depositphotos.com/1742172/9684/v/950/depositphotos_96843646-stock-illustration-textured-cartoon-salad.jpg">
           <label for="contactChoice3"><img src= "https://st2.depositphotos.com/1742172/9684/v/950/depositphotos_96843646-stock-illustration-textured-cartoon-salad.jpg" height= "50" width = "50"></label>
         </div>
-      </form>
+
       <br/><br/>
 
 
