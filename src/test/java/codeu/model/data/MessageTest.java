@@ -40,3 +40,4 @@ public class MessageTest {
     Assert.assertEquals(picture, message.getPicture());
   }
 }
+

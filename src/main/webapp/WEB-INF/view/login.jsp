@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
     <nav>
-        <a>Chat It Up!</a>
+        <a>Chat It Up: Connecting Made Simple</a>
     </nav>
 <head>
  <title>Login</title>
