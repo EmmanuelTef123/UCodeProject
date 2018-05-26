@@ -29,7 +29,7 @@
      <label for="password">Password: </label>
      <input type="password" name="password" id="password">
      <br/><br/>
-     br/><br/>
+     <br/><br/>
      <button type="submit">Submit</button>
       <form>
         <p>Please select the food you asscoiate yourelf with the most:</p>
