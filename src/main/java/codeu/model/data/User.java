@@ -23,6 +23,7 @@ public class User {
   private final String name;
   private final String password;
   private final Instant creation;
+  private final String idPic;
 
   /**
    * Constructs a new User.
@@ -32,11 +33,12 @@ public class User {
    * @param password for this user
    * @param creation the creation time of this User
    */
-  public User(UUID id, String name, String password, Instant creation) {
+  public User(UUID id, String name, String password, Instant creation, String idPic) {
     this.id = id;
     this.name = name;
     this.password = password;
     this.creation = creation;
+    this.idPic = idPic;
   }
 
   /** Returns the ID of this User. */
@@ -56,5 +58,8 @@ public class User {
   /** Returns the creation time of this User. */
   public Instant getCreationTime() {
     return creation;
+  }
+  public String getPicture(){
+    return idPic;
   }
 }

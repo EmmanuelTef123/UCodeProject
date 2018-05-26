@@ -27,12 +27,14 @@ public class UserTest {
     String name = "test_username";
     Instant creation = Instant.now();
     String password = "password";
+    String idPic = "https://st3.depositphotos.com/1007168/14191/v/1600/depositphotos_141915462-stock-illustration-smiling-steak-cartoon.jpg";
 
-    User user = new User(id, name, password, creation);
+    User user = new User(id, name, password, creation, idPic);
 
     Assert.assertEquals(id, user.getId());
     Assert.assertEquals(name, user.getName());
     Assert.assertEquals(password, user.getPassword());
     Assert.assertEquals(creation, user.getCreationTime());
+    Assert.assertEquals(idPic, "https://st3.depositphotos.com/1007168/14191/v/1600/depositphotos_141915462-stock-illustration-smiling-steak-cartoon.jpg");
   }
 }

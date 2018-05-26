@@ -82,10 +82,6 @@ public class MessageStore {
     return loaded;
   }
 
-  public List<Message> getAllMessages() {
-    return messages;
-  }
-
   /** Add a new message to the current set of messages known to the application. */
   public void addMessage(Message message) {
     messages.add(message);

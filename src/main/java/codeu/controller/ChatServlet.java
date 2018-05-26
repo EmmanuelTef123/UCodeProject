@@ -186,6 +186,10 @@ public class ChatServlet extends HttpServlet {
     //here i split the message around spaces
     String[] splitMessage = cleanedMessageContent.toLowerCase().split(" ");
     //going through the message and seeing
+    //if there is nothing in picture then make it image null and override it if there is
+    image = null;
+
+    //check and see if there is anything in the message
     for (int currentWordCount = 0; currentWordCount < splitMessage.length; currentWordCount++){
       if (keyWords.keySet().contains(splitMessage[currentWordCount])){
         image = keyWords.get(splitMessage[currentWordCount]);
@@ -201,7 +205,7 @@ public class ChatServlet extends HttpServlet {
             conversation.getId(),
             user.getId(),
             cleanedMessageContent,
-            Instant.now());
+            Instant.now(), image);
 
     messageStore.addMessage(message);
 

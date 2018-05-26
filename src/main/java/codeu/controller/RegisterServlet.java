@@ -66,7 +66,10 @@ public class RegisterServlet extends HttpServlet {
    String confirmPassword = request.getParameter("confirmPassword");
    String humanVerification = request.getParameter("humanVerification");
    String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
-   
+
+   String idPic = request.getParameter("idPic");
+
+
    String currentPicAddress = registerTest.get(randomRPic);
    request.setAttribute("currentPicAddress", currentPicAddress);
 
@@ -88,13 +91,19 @@ public class RegisterServlet extends HttpServlet {
      request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
      return;
    }
-   
+
    if (!password.equals(confirmPassword)) {
     request.setAttribute("error", "Those passwords didn't match. Try again.");
     request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
     return;
   }
-   User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
+  if(idPic == null){
+    //so they have not chose a picture should make them choose picture
+      request.setAttribute("error", "To register must choose a picture");
+     request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
+   }
+
+   User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now(), idPic);
    userStore.addUser(user);
 
    response.sendRedirect("/login");
@@ -103,7 +112,7 @@ public class RegisterServlet extends HttpServlet {
   * Store class that gives access to Users.
   */
   private UserStore userStore;
- 
+
   /**
    * Set up state for handling registration-related requests. This method is only called when
    * running in a server, not when running in a test.
@@ -136,6 +145,7 @@ public class RegisterServlet extends HttpServlet {
   }
  
 
+
   /**
    * Sets the UserStore used by this servlet. This function provides a common setup method
    * for use by the test framework or the servlet's init() function.
@@ -144,3 +154,5 @@ public class RegisterServlet extends HttpServlet {
     this.userStore = userStore;
   }
 }
+
+

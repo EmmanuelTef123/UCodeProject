@@ -17,10 +17,12 @@
 <%@ page import="codeu.model.data.Conversation" %>
 <%@ page import="codeu.model.data.Message" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
+<%@ page import="codeu.model.data.User" %>
 <%
 Conversation conversation = (Conversation) request.getAttribute("conversation");
 List<Message> messages = (List<Message>) request.getAttribute("messages");
 String url = (String) request.getAttribute("image");
+UserStore currentUserStash = UserStore.getInstance();
 %>
 
 <!DOCTYPE html>
@@ -70,21 +72,90 @@ String url = (String) request.getAttribute("image");
     <hr/>
 
     <div id="chat">
-      <ul>
+      <!--<ul>-->
     <%
       for (Message message : messages) {
+        //User userCurrent = (User) UserStore.getInstance()
+          //.getUser(message.getAuthorId());
         String author = UserStore.getInstance()
           .getUser(message.getAuthorId()).getName();
+          User currentUser = (User) UserStore.getInstance()
+          .getUser(message.getAuthorId());
+
     %>
-      <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
-    <%
-      }
+
+
+    <% if(request.getSession().getAttribute("user").equals(author)){ %>
+        <!--<div align="right" id="myTexts">
+          <hgroup class="speech-bubbles">
+            <h5><%= message.getContent() %></h5>
+          </hgroup>
+          <br>
+          <strong><%= author %>:</strong>
+          <% if(message.getPicture() != null) { %>
+          <img align="right" src=<%= message.getPicture() %> height= "50" width = "50">
+        </div>
+        <% } else { %>
+        <% } %>-->
+    <table style="margin-left: auto; margin-right: 0;" id="myText" cellspacing="50">
+      <td float="right" align="right">
+        <div float="right" align="right"><% if(message.getPicture() != null) { %>
+                <img src=<%= message.getPicture() %> height= "50" width = "50">
+            <% } else { %>
+            <% } %></div>
+      </td>
+      <td  float="right" align="right">
+        <div align="right"><hgroup class="speech-bubbles">
+              <h5 text-align: right><%= message.getContent() %></h5>
+          </hgroup></div>
+          <!--<strong><%= author %>:</strong>-->
+      </td>
+
+
+
+    </table>
+
+
+    <% } else { %>
+    <table id="otherText" cellspacing="50">
+      <td align="left">
+        <div align="left"><hgroup class="speech-bubble">
+              <h5><%= message.getContent() %></h5>
+          </hgroup></div>
+          <strong><%= author %>:</strong>
+          <% if(currentUser.getPicture() != null) { %>
+                <img src=<%= currentUser.getPicture() %> height= "50" width = "50">
+            <% } else { %>
+            <% } %>
+
+
+      </td>
+      <td>
+        <div align="left"><% if(message.getPicture() != null) { %>
+                <img align = "left" src=<%= message.getPicture() %> height= "50" width = "50">
+            <% } else { %>
+            <% } %></div>
+      </td>
+
+    </table>
+
+
+      <!--<div style="inline-block" align="left" id="otherText" >
+
+      </div>
+      <div id="otherpicture">
+
+          <br>
+
+      </div>-->
+
+    <% } %>
+
+    <%}
     %>
-      <% if(url != null) { %>
-        <img src=<%= url %> height= "50" width = "50">
-      <% } else { %>
-      <% } %>
-      </ul>
+
+
+     <!-- </ul>-->
     </div>
 
     <hr/>
